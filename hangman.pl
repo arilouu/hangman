@@ -21,30 +21,32 @@ sub start_game {
 	my $current = $word;
 	my $finished = 0;
 	while(!$finished) {
-
-
 		print "Guess a letter: ";
 		my $letter = <>;
 		chomp $letter;
+		if ($letter eq '') {
+			&print_update($word, $current);		
+			next;
+		} else {
+	
+			chomp $letter;
+			if ($current =~s/$letter/-/g) { #user guesses correctly, so print current word
+				&print_update($word, $current);
+			}else{
+				print "Try again\n";
+				&print_update($word, $current);
+			}
 
 
-		if ($current =~s/$letter/-/g) { #user guesses correctly, so print current word
-			&print_update($word, $current);
-		}else{
-			print "Try again\n";
-			&print_update($word, $current);
-		}
+			my $answer = "-" x length($word);
 
-
-		my $answer = "-" x length($word);
-
-		if($current eq $answer) {
-			print "You Won!\n";
-			$finished = 1;
+			if($current eq $answer) {
+				print "You Won!\n";
+				$finished = 1;
+			}
 		}
 	}
 }
-
 sub print_update {
 	my($answer,$current)=@_;
 

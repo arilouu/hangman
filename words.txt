@@ -1,3 +1,11 @@
-elephant
-tiger
-monkey
+aatrox
+ahri
+akali
+alistar
+amumu
+anivia
+annie
+ashe
+blitzcrank
+brand
+caitlyn
