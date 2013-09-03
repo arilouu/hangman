@@ -25,12 +25,15 @@ sub start_game {
 		print "Guess a letter: ";
 		my $letter = <>;
 		chomp $letter;
-		if ($letter eq '' or $letter eq '.') {
+		$letter = lc($letter);
+		if($letter !~ /[a-z]/ or length($letter) > 1 ){
+			#if($letter eq '' or $letter eq '.' or $letter !~ /[a-z]/ or length($letter) > 1 ){
 			&print_update($word, $current);		
 			next;
 		} else {
 	
 			chomp $letter;
+			
 			if ($current =~s/$letter/-/gi) { #user guesses correctly, so print current word
 			print "word: $word, current: $current\n";	
 				&print_update($word, $current);
