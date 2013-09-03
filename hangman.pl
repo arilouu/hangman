@@ -25,14 +25,14 @@ sub start_game {
 		print "Guess a letter: ";
 		my $letter = <>;
 		chomp $letter;
-		if ($letter eq '') {
+		if ($letter eq '' or $letter eq '.') {
 			&print_update($word, $current);		
 			next;
 		} else {
 	
 			chomp $letter;
-			if ($current =~s/$letter/-/g) { #user guesses correctly, so print current word
-print "word: $word, current: $current\n";	
+			if ($current =~s/$letter/-/gi) { #user guesses correctly, so print current word
+			print "word: $word, current: $current\n";	
 				&print_update($word, $current);
 			}else{
 				print "Try again\n";
@@ -69,7 +69,7 @@ sub print_update {
 }
 
 sub pick_a_word {
-	my $filename = "words.txt";
+	my $filename = "champs.txt";
 
 	my $num_words = 1;
 	my %words;
