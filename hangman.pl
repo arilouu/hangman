@@ -19,6 +19,7 @@ sub start_game {
 
 	my $word = shift;
 	my $current = $word;
+	$current =~s/[\s\'\.]/-/g;		
 	my $finished = 0;
 	while(!$finished) {
 		print "Guess a letter: ";
@@ -31,6 +32,7 @@ sub start_game {
 	
 			chomp $letter;
 			if ($current =~s/$letter/-/g) { #user guesses correctly, so print current word
+print "word: $word, current: $current\n";	
 				&print_update($word, $current);
 			}else{
 				print "Try again\n";
@@ -50,6 +52,7 @@ sub start_game {
 sub print_update {
 	my($answer,$current)=@_;
 
+	$current =~s/[\s\'\.]/-/g;		
 	my @a = split(//,$answer);
 	my @c = split(//,$current);
 

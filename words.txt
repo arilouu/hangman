@@ -1,11 +1,3 @@
-aatrox
-ahri
-akali
-alistar
-amumu
-anivia
-annie
-ashe
-blitzcrank
-brand
-caitlyn
+dr. mundo
+master yi
+cho'gath
